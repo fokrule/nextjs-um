@@ -1,10 +1,12 @@
-function AllEventPage() {
-    return (
-        <div>
-            <h1>
-               All Event Home page 
-            </h1>
-        </div>
-    );
+import { getAllEvents } from '../../dummy-data';
+import EventList from '../../components/events/event-list';
+function AllEventsPage(props) {
+  const events = getAllEvents();
+
+  return (
+    <div>
+      <EventList items={events} />
+    </div>
+  );
 }
-export default AllEventPage;
+export default AllEventsPage;

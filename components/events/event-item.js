@@ -1,6 +1,8 @@
-import Link from 'next/link';
+import Button from '../ui/button';
 import classes from './event-item.module.css';
-
+import DateIcon from '../icons/date-icon';
+import AddressIcon from '../icons/address-icon';
+import ArrowRigntIcon from '../icons/arrow-right-icon';
 function EventItem (props) {
     console.log(props);
     const { title,image,date,location,id } = props;
@@ -10,7 +12,6 @@ function EventItem (props) {
         month: 'long',
         year: 'numeric'
     });
-    console.log(date);
     const formattedAddress = location.replace('/ ',',');
     const exploreLink = `/events/${id}`;
     return (
@@ -21,19 +22,26 @@ function EventItem (props) {
                     <h2>
                         {title}
                     </h2>
-                    <div>
+                    <div className={classes.date}>
+                        <DateIcon/>
                         <time>
                             {humanReadableDate}
                         </time>
                     </div>
-                    <div>
+                    <div className={classes.address}>
+                        <AddressIcon/>
                         <address>
                             {formattedAddress}
                         </address>
                     </div>
                 </div>
-                <div>
-                    <Link href={exploreLink}> Explore Event</Link>
+                <div className={classes.actions}>
+                    <Button link={exploreLink}>
+                        <span>Explore Event</span>    
+                        <span>
+                            <ArrowRigntIcon />
+                        </span>
+                        </Button>
                 </div>
             </div>
         </li>
